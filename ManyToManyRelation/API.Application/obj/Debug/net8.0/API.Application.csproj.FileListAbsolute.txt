@@ -1,0 +1,12 @@
+D:\C#\ManyToManyRelation\API.Application\bin\Debug\net8.0\API.Application.deps.json
+D:\C#\ManyToManyRelation\API.Application\bin\Debug\net8.0\API.Application.dll
+D:\C#\ManyToManyRelation\API.Application\bin\Debug\net8.0\API.Application.pdb
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.AssemblyInfoInputs.cache
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.AssemblyInfo.cs
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.csproj.CoreCompileInputs.cache
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.sourcelink.json
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.dll
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\refint\API.Application.dll
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\API.Application.pdb
+D:\C#\ManyToManyRelation\API.Application\obj\Debug\net8.0\ref\API.Application.dll
