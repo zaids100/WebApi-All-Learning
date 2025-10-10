@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Playlist_Manager.DTOs;
 using Playlist_Manager.DTOs.Artist;
 using Playlist_Manager.Services;
@@ -8,6 +9,7 @@ namespace Playlist_Manager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles ="admin")]
     public class ArtistController : ControllerBase
     {
         private readonly ArtistService _artistService;

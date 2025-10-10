@@ -20,20 +20,34 @@ namespace Playlist_Manager.Services
 
         public async Task<SongResponseDto> CreateSongAsync(SongCreateDto dto)
         {
+            if (string.IsNullOrWhiteSpace(dto.Title))
+                throw new ArgumentException("Title cannot be empty.");
+
+            if (string.IsNullOrWhiteSpace(dto.Artist))
+                throw new ArgumentException("Artist name cannot be empty.");
+
+            
+            var existing = (await _songRepository.GetSongsByArtistAsync(dto.Artist))
+                .FirstOrDefault(s => s.Title.Equals(dto.Title, StringComparison.OrdinalIgnoreCase));
+
+            if (existing != null)
+                throw new InvalidOperationException("A song with the same title already exists for this artist.");
+
             var song = new Song
             {
-                Title = dto.Title,
-                Artist = dto.Artist,
-                Album = dto.Album,
-                Genre = dto.Genre,
+                Title = dto.Title.Trim(),
+                Artist = dto.Artist.Trim(),
+                Album = dto.Album?.Trim() ?? string.Empty,
+                Genre = dto.Genre?.Trim() ?? string.Empty,
                 Duration = dto.Duration,
                 ReleaseDate = dto.ReleaseDate,
-                SongLink = dto.SongLink
+                SongLink = dto.SongLink?.Trim()
             };
 
             var created = await _songRepository.CreateSongAsync(song);
             return MapToDto(created);
         }
+
 
         public async Task<SongResponseDto?> GetSongByIdAsync(int id)
         {

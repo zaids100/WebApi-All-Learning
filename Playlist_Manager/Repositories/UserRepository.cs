@@ -30,7 +30,7 @@ namespace Playlist_Manager.Repositories
             if (existingUser == null)
                 return false;
 
-            // Update only non-null or changed fields
+            
             existingUser.Username = user.Username;
             existingUser.Email = user.Email;
             existingUser.ProfileImage = user.ProfileImage ?? existingUser.ProfileImage;

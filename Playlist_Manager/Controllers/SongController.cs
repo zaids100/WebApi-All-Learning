@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Playlist_Manager.DTOs;
 using Playlist_Manager.DTOs.Song;
 using Playlist_Manager.Services;
@@ -8,6 +9,7 @@ namespace Playlist_Manager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles="user,admin")]
     public class SongController : ControllerBase
     {
         private readonly SongService _songService;
@@ -18,11 +20,16 @@ namespace Playlist_Manager.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> CreateSong([FromBody] SongCreateDto dto)
         {
-            var created = await _songService.CreateSongAsync(dto);
-            return CreatedAtAction(nameof(GetSongById), new { id = created.Id }, created);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _songService.CreateSongAsync(dto);
+            return Ok(result);
         }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSongById(int id)

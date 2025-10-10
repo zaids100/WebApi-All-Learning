@@ -23,28 +23,28 @@ namespace Playlist_Manager.Services
         //  Register a new user
         public async Task<UserResponseDto?> RegisterUserAsync(UserRegisterDto dto)
         {
-            // Check for duplicates
+           
             if (await _userRepository.IsEmailExistsAsync(dto.Email))
                 throw new Exception("Email already registered.");
 
             if (await _userRepository.IsUsernameExistsAsync(dto.Username))
                 throw new Exception("Username already taken.");
 
-            // Hash password
+            
             string hashedPassword = HashPassword(dto.Password);
 
-            // Create new user entity
+            
             var newUser = new User
             {
                 Username = dto.Username,
                 Email = dto.Email,
                 PasswordHash = hashedPassword,
-                Role = "user",
+                Role = dto.Role,
                 ProfileImage = dto.ProfileImage,
                 CreatedAt = DateTime.UtcNow
             };
 
-            // Save to DB
+            
             var createdUser = await _userRepository.CreateUserAsync(newUser);
 
             return new UserResponseDto
@@ -58,7 +58,7 @@ namespace Playlist_Manager.Services
             };
         }
 
-        //  Login
+       
         public async Task<UserResponseDto?> LoginUserAsync(UserLoginDto dto)
         {
             var hashedPassword = HashPassword(dto.Password);
@@ -78,7 +78,7 @@ namespace Playlist_Manager.Services
             };
         }
 
-        //  Get user by ID
+       
         public async Task<UserResponseDto?> GetUserByIdAsync(int id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
@@ -95,7 +95,7 @@ namespace Playlist_Manager.Services
             };
         }
 
-        //  Get all users (Admin only)
+       
         public async Task<IEnumerable<UserResponseDto>> GetAllUsersAsync()
         {
             var users = await _userRepository.GetAllUsersAsync();
@@ -110,7 +110,7 @@ namespace Playlist_Manager.Services
             });
         }
 
-        //  Update user info (excluding password)
+        
         public async Task<bool> UpdateUserAsync(int id, UserUpdateDto dto)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
@@ -124,13 +124,13 @@ namespace Playlist_Manager.Services
             return await _userRepository.UpdateUserAsync(user);
         }
 
-        //  Delete user
+        
         public async Task<bool> DeleteUserAsync(int id)
         {
             return await _userRepository.DeleteUserAsync(id);
         }
 
-        //  Helper: Hash password
+       
         private string HashPassword(string password)
         {
             using var sha256 = SHA256.Create();

@@ -18,7 +18,7 @@ namespace Playlist_Manager.Models
 
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
-        public string Role { get; set; } = "user";
+        public string? Role { get; set; } = "user";
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public byte[]? ProfileImage { get; set; }
         public ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();

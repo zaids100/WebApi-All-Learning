@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Playlist_Manager.DTOs.Playlist;
 using Playlist_Manager.Models;
 using Playlist_Manager.Services;
@@ -9,6 +10,7 @@ namespace Playlist_Manager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles ="user,admin")]
     public class PlaylistController : ControllerBase
     {
         private readonly PlaylistService _playlistService;
@@ -18,7 +20,7 @@ namespace Playlist_Manager.Controllers
             _playlistService = playlistService;
         }
 
-        // Create playlist
+       
         [HttpPost]
         public async Task<IActionResult> CreatePlaylist([FromBody] PlaylistCreateDto dto)
         {
@@ -33,7 +35,7 @@ namespace Playlist_Manager.Controllers
             }
         }
 
-        // Get playlist by ID
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlaylistById(int id)
         {
@@ -42,7 +44,7 @@ namespace Playlist_Manager.Controllers
             return Ok(playlist);
         }
 
-        // Get all playlists
+       
         [HttpGet]
         public async Task<IActionResult> GetAllPlaylists()
         {
@@ -50,7 +52,7 @@ namespace Playlist_Manager.Controllers
             return Ok(playlists);
         }
 
-        // Update playlist
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePlaylist(int id, [FromBody] PlaylistUpdateDto dto)
         {
@@ -59,7 +61,7 @@ namespace Playlist_Manager.Controllers
             return Ok(new { message = "Playlist updated successfully" });
         }
 
-        // Delete playlist
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlaylist(int id)
         {
@@ -68,7 +70,7 @@ namespace Playlist_Manager.Controllers
             return Ok(new { message = "Playlist deleted successfully" });
         }
 
-        // Get all playlists of a user
+        
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetPlaylistsByUser(int userId)
         {
