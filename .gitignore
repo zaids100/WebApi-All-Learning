@@ -1,0 +1,134 @@
+# =========================
+# .NET / Visual Studio Git Ignore
+# =========================
+
+## Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+out/
+artifacts/
+TestResults/
+[Aa]ppPackages/
+*.pidb
+*.svclog
+*.scc
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.rsuser
+*.sln.docstates
+
+## IDEs and editors
+.vscode/
+.idea/
+*.sln.iml
+
+## Visual Studio cache and temporary files
+.vs/
+*.ncb
+*.opendb
+*.cachefile
+ipch/
+*.dbmdl
+
+## Compiled binaries
+*.dll
+*.exe
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.msi
+*.pdb
+
+## Package management
+*.nupkg
+*.snupkg
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+artifacts/
+packages/
+# Uncomment if you want to ignore nuget.exe
+# nuget.exe
+
+## .NET Core
+*.deps.json
+*.runtimeconfig.json
+*.runtimeconfig.dev.json
+
+## ASP.NET
+wwwroot/
+App_Data/
+App_Browsers/
+App_Code/
+App_WebReferences/
+
+## Configuration and secrets
+*.config
+appsettings.Development.json
+secrets.json
+.env
+
+## Publish outputs
+publish/
+PublishedFiles/
+_PublishedWebsites/
+*.[Pp]ublish.xml
+*.[Pp]ublishsettings
+
+## Entity Framework
+Migrations/
+
+## Azure
+*.azurePubxml
+*.pubxml
+*.publishproj
+
+## Logs and reports
+*.log
+*.tlog
+*.wrn
+*.err
+*.cache
+*.ilk
+
+## Test and coverage
+TestResults/
+*.coverage
+*.coveragexml
+*.trx
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Rider
+.idea/
+*.sln.iml
+
+## Others
+*.tmp
+*.bak
+*.old
+*.orig
+*.swp
+*.swo
+
+## OS-generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+
+# =========================
+# End of file
+# =========================
